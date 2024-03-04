@@ -4,6 +4,7 @@
 
 ## Description
 
+This project is a system which focuses on shared accommodation management. The intent for this management system is to have a centralized platform, which is tailored towards addressing the needs of users living in communal living space. Living in a shared accommodation often comes with a set of challenges which can have varying effects on the living experience for the roommates. Our goal is to address these challenges by streamlining tasks and improving communication. 
 A brief description of the project.
 
 ## Table of Contents
