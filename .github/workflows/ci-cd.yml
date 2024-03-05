@@ -19,14 +19,13 @@ jobs:
         with:
           java-version: "17"
           distribution: "adopt"
-          gradle-version: "8.5"
 
       - name: Build and Test Frontend
         working-directory: frontend
         run: |
           npm install
           npm test
-      
+    
       - name: Build Frontend Docker Image
         working-directory: frontend
         run: docker build -t registry.heroku.com/cribhub-frontend-test/web .
@@ -63,18 +62,33 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event_name == 'workflow_dispatch'
     steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      # Build Docker Image for Backend
+      - name: Build Backend Docker Image for Production
+        working-directory: backend
+        run: docker build -t registry.heroku.com/cribhub-backend-prod/web .
+
+      # Deploy Backend to Heroku Production Environment
       - name: Deploy Backend to Heroku Production Environment
         env:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
         run: |
           heroku container:login
-          heroku container:push web --app cribhub-backend-prod
+          docker push registry.heroku.com/cribhub-backend-prod/web
           heroku container:release web --app cribhub-backend-prod
 
+      # Build Docker Image for Frontend
+      - name: Build Frontend Docker Image for Production
+        working-directory: frontend
+        run: docker build -t registry.heroku.com/cribhub-frontend-prod/web .
+
+      # Deploy Frontend to Heroku Production Environment
       - name: Deploy Frontend to Heroku Production Environment
         env:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
         run: |
           heroku container:login
-          heroku container:push web --app cribhub-frontend-prod
+          docker push registry.heroku.com/cribhub-frontend-prod/web
           heroku container:release web --app cribhub-frontend-prod
