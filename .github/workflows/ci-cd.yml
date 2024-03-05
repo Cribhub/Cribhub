@@ -26,8 +26,47 @@ jobs:
         run: |
           npm install
           npm test
-
+      
       - name: Build and Test Backend
         working-directory: backend
         run: |
           ./gradlew build
+
+      - name: Deploy Backend to Heroku Test Environment
+        if: success() # Only run if previous steps were successful
+        env:
+          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+        run: |
+          heroku container:login
+          heroku container:push web --app cribhub-backend-test
+          heroku container:release web --app cribhub-backend-test
+
+      - name: Deploy Frontend to Heroku Test Environment
+        if: success() # Only run if previous steps were successful
+        env:
+          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+        run: |
+          heroku container:login
+          heroku container:push web --app cribhub-frontend-test
+          heroku container:release web --app cribhub-frontend-test
+  
+  deploy-to-production:
+    needs: build-and-test
+    runs-on: ubuntu-latest
+    if: github.event_name == 'workflow_dispatch'
+    steps:
+      - name: Deploy Backend to Heroku Production Environment
+        env:
+          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+        run: |
+          heroku container:login
+          heroku container:push web --app cribhub-backend-prod
+          heroku container:release web --app cribhub-backend-prod
+
+      - name: Deploy Frontend to Heroku Production Environment
+        env:
+          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+        run: |
+          heroku container:login
+          heroku container:push web --app cribhub-frontend-prod
+          heroku container:release web --app cribhub-frontend-prod
