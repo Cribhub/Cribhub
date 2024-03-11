@@ -10,6 +10,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Customer {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long userId;
@@ -22,9 +23,9 @@ public class Customer {
 
     private String password;
 
-    @OneToOne(mappedBy = "crib")
-    @JsonIgnore
-    private Crib crib;
+    //@OneToOne(mappedBy = "crib")
+    //@JsonIgnore
+    //private Crib crib;
 
     protected Customer() {
     }
@@ -34,4 +35,6 @@ public class Customer {
         this.email = email;
         this.password = password;
     }
+
+
 }

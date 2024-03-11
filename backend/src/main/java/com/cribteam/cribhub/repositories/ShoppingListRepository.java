@@ -7,6 +7,5 @@ import java.util.Optional;
 
 public interface ShoppingListRepository extends CrudRepository<ShoppingList, Long> {
 
-    ShoppingList findShoppingListByShoppingListId(long userId);
 
 }

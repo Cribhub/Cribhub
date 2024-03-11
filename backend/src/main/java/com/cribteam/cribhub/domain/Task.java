@@ -13,8 +13,8 @@ public class Task {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long taskId;
 
-    @OneToMany(mappedBy = "user")
-    private Collection<Customer> taskMembers;
+    //@OneToMany(mappedBy = "user")
+    //private Collection<Customer> taskMembers;
 
     private String description;
 
@@ -23,7 +23,7 @@ public class Task {
     }
 
     public Task(Collection<Customer> taskMembers, String description){
-        this.taskMembers = taskMembers;
+        //this.taskMembers = taskMembers;
         this.description = description;
     }
 
