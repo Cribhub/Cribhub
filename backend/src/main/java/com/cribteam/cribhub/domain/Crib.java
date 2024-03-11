@@ -16,8 +16,8 @@ public class Crib {
 
     private String cribName;
 
-    @OneToMany (mappedBy = "user")
-    private Collection<Customer> cribMembers;
+    //@OneToMany (mappedBy = "user")
+    //private Collection<Customer> cribMembers;
 
     protected Crib() {
 
@@ -25,7 +25,7 @@ public class Crib {
 
     public Crib(String cribName, Collection<Customer> cribMembers){
         this.cribName = cribName;
-        this.cribMembers = cribMembers;
+        //this.cribMembers = cribMembers;
     }
 
 

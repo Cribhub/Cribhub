@@ -6,25 +6,24 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-@Entity
 @Getter
+@Entity
 @Setter
 public class Customer {
+    // Getters
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long userId;
 
     private String userName;
 
-
     private String email;
-
 
     private String password;
 
-    @OneToOne(mappedBy = "crib")
-    @JsonIgnore
-    private Crib crib;
+    //@OneToOne(mappedBy = "crib")
+    //@JsonIgnore
+    //private Crib crib;
 
     protected Customer() {
     }
@@ -34,4 +33,6 @@ public class Customer {
         this.email = email;
         this.password = password;
     }
+
+
 }

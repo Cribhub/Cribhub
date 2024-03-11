@@ -15,8 +15,8 @@ public class ShoppingList {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long ShoppingListId;
 
-    @OneToMany(mappedBy = "user")
-    private Collection<Customer> ShoppingListMembers;
+    //@OneToMany(mappedBy = "user")
+    //private Collection<Customer> ShoppingListMembers;
 
     private String shoppingDescription;
 

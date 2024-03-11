@@ -2,7 +2,6 @@ package com.cribteam.cribhub.controller;
 
 import com.cribteam.cribhub.domain.Customer;
 import com.cribteam.cribhub.services.CustomerService;
-import com.cribteam.cribhub.DTO.CustomerDTO;
 import com.cribteam.cribhub.DTO.CustomerUpdateDTO;
 
 
@@ -26,28 +25,18 @@ public class CustomerController {
     }
 
     @PostMapping("/customer")
-    public ResponseEntity<CustomerDTO> createCustomer(@RequestBody Customer customer) {
-        customerService.saveCustomer(customer);
-        return ResponseEntity.status(HttpStatus.CREATED).body(CustomerDTO.ConvertToDTO(customer));
+    public ResponseEntity<Customer> createCustomer(@RequestBody Customer customer) {
+        customerService.createCustomer(customer);
+        return ResponseEntity.status(HttpStatus.CREATED).body(customer);
     }
 
     @GetMapping("/customer/{id}")
-    public ResponseEntity<CustomerDTO> getCustomerById(@PathVariable long id) {
+    public ResponseEntity<Customer> getCustomerById(@PathVariable long id) {
         Customer customer = customerService.getCustomerById(id);
 
-        return ResponseEntity.ok(CustomerDTO.ConvertToDTO(customer));
+        return ResponseEntity.ok(customer);
     }
 
-    @GetMapping("/customer")
-    public Optional<Customer> getCustomerByEmail(@RequestParam(name = "email") String customerEmail){
-        return customerService.getCustomerByEmail(customerEmail);
-    }
-
-    @PutMapping("/customer/{id}")
-    public ResponseEntity<CustomerDTO> updateCustomer(@PathVariable("id") long id,  @RequestBody CustomerUpdateDTO updatedCustomer) {
-        var result = customerService.updateCustomer(id, updatedCustomer);
-        return ResponseEntity.ok(CustomerDTO.ConvertToDTO(result));
-    }
 
     @DeleteMapping("customer/{id}")
     public ResponseEntity<String> deleteCustomer( @PathVariable long id) {
