@@ -1,5 +1,5 @@
 body {
-    background-color: #fff9e6;
+    background-color: #588157;
 }
 
 .container{
@@ -15,6 +15,7 @@ body {
     flex: 1;
     width: 100%;
     align-items: center;
+    background-color: #b0c4b1;
     justify-content: center;
     display: flex;
     flex-direction: column;
@@ -24,7 +25,7 @@ body {
 
 .form {
     align-items: center;
-    background-color: #FFE787;
+    background-color: #3a5a40;
     box-shadow: 0 8px 8px #4C424A;
     display: flex;
     flex-direction: column;
@@ -47,6 +48,7 @@ body {
 .text-wrapper-3, .text-wrapper-4 {
     width: 100%;
     max-width: 800px;
+    color: #dad7cd;
     font-size: 120%;
     font-family: "Arial Black";
     text-align: center; /* To center the text within its container */

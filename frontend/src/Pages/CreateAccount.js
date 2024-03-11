@@ -37,9 +37,8 @@ function CreateAccount() {
 
             <div className={"form"}>
                 <p className={"text-wrapper-3"}> Create Account: </p>
-                <div className="text-wrapper-4">
-                    <NavLink to="/" activeClassName="active">Already have an account? Login</NavLink>
-                </div>
+                <NavLink to="/" activeClassName="active" className={"text-wrapper-3"}>Already have an account? Login</NavLink>
+
                 <Input
                     type= "email"
                     placeholder={"Email"}

@@ -38,7 +38,7 @@ function Login(){
             <div className="text-wrapper-3">LOG IN</div>
             <div className="span">
                 <div className="text-wrapper-4">
-                    <NavLink to="/createaccount" activeClassName="active">New user? Create account</NavLink>
+                    <NavLink to="/createaccount" activeClassName="active"  className = "text-wrapper-3">New user? Create account</NavLink>
                 </div>
 
             </div>
