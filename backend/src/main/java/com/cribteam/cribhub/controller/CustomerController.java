@@ -26,25 +26,17 @@ public class CustomerController {
 
     @PostMapping("/customer")
     public ResponseEntity<Customer> createCustomer(@RequestBody Customer customer) {
-        Customer newCustomer = customerService.saveCustomer(customer);
-        return ResponseEntity.status(HttpStatus.CREATED).body(newCustomer);
+        customerService.createCustomer(customer);
+        return ResponseEntity.status(HttpStatus.CREATED).body(customer);
     }
 
     @GetMapping("/customer/{id}")
-    public Customer getCustomerById(@PathVariable long id) {
-        return customerService.getCustomerById(id);
+    public ResponseEntity<Customer> getCustomerById(@PathVariable long id) {
+        Customer customer = customerService.getCustomerById(id);
+
+        return ResponseEntity.ok(customer);
     }
 
-    @GetMapping("/customer")
-    public Optional<Customer> getCustomerByEmail(@RequestParam(name = "email") String customerEmail){
-        return customerService.getCustomerByEmail(customerEmail);
-    }
-
-    @PutMapping("/customer/{id}")
-    public ResponseEntity<Customer> updateCustomer(@PathVariable("id") long id,  @RequestBody CustomerUpdateDTO updatedCustomer) {
-        var result = customerService.updateCustomer(id, updatedCustomer);
-        return ResponseEntity.ok(result);
-    }
 
     @DeleteMapping("customer/{id}")
     public ResponseEntity<String> deleteCustomer( @PathVariable long id) {
