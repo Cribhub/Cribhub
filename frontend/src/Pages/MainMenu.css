@@ -1,0 +1,47 @@
+body {
+    background-color: #fff9e6;
+}
+.mainMenucontainer{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.calendarContainer {
+    display: block;
+    width: 60%;
+    text-align: center
+
+}
+
+.calendar-todo-list {
+    text-align: left;
+    padding: 0;
+    list-style: none;
+}
+
+.firstrow{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+#taskList{
+    align-content: center;
+    padding: 20px;
+    border: 2px solid #4C424A;
+    width: 50%;
+    margin-left: 10px;
+    margin-right: 5px;
+    justify-content: center;
+}
+
+#shoppingList{
+    align-content: center;
+    padding: 20px;
+    border: 2px solid #4C424A;
+    width: 50%;
+    margin-right: 10px;
+    margin-left: 5px;
+    justify-content: center;
+}
