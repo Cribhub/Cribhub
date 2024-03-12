@@ -8,8 +8,10 @@ import com.cribteam.cribhub.services.CustomerService;
 
 
 import com.cribteam.cribhub.services.CustomerServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,6 +22,9 @@ public class CustomerController {
 
     private final CustomerService customerService;
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
     public CustomerController(CustomerServiceImpl customerService, CribService cribService) {
         this.customerService = customerService;
         this.cribService = cribService;
@@ -27,6 +32,8 @@ public class CustomerController {
 
     @PostMapping("/customer")
     public ResponseEntity<CustomerDTO> createCustomer(@RequestBody Customer customer) {
+        String hashedPassword = passwordEncoder.encode(customer.getPassword());
+        customer.setPassword(hashedPassword);
         customerService.createCustomer(customer);
         return ResponseEntity.status(HttpStatus.CREATED).body(CustomerDTO.ConvertToDTO(customer));
     }
