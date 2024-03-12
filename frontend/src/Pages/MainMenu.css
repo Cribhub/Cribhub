@@ -1,5 +1,5 @@
 body {
-    background-color: #fff9e6;
+    background-color: #b0c4b1;
 }
 .mainMenucontainer{
     height: 100vh;
@@ -34,6 +34,7 @@ body {
     margin-left: 10px;
     margin-right: 5px;
     justify-content: center;
+    box-shadow:  5px 5px 5px #3a5a40;
 }
 
 #shoppingList{
@@ -44,4 +45,6 @@ body {
     margin-right: 10px;
     margin-left: 5px;
     justify-content: center;
+    box-shadow: 5px 5px 5px #3a5a40;
+
 }
