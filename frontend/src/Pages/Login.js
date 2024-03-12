@@ -4,6 +4,7 @@ import {useState} from "react";
 import { useNavigate } from 'react-router-dom';
 import Input from '../Components/TextInput'
 import Button from "../Components/Button/Button";
+import myImage from "./Logo_GreyBg.PNG"
 
 
 function Login(){
@@ -29,9 +30,9 @@ function Login(){
     return(
         <div className={"container"}>
         <div className={"logo"}>
-            <p className={"text-wrapper-3"}>CRIBHUB</p>
-            <p> LOGO </p>
-            <p> To help your shared accomadtion needs</p>
+            <div>
+                <img src={myImage} alt="My Image" className={"my-image"} />
+            </div>
         </div>
 
         <div className="form">

@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.util.Collection;
+import java.util.List;
 
 @Entity
 @Getter
@@ -16,17 +17,18 @@ public class Crib {
 
     private String cribName;
 
-    //@OneToMany (mappedBy = "user")
-    //private Collection<Customer> cribMembers;
+    @OneToMany(mappedBy = "crib")
+    private List<Customer> cribMembers;
 
     protected Crib() {
 
     }
 
-    public Crib(String cribName, Collection<Customer> cribMembers){
+    public Crib(String cribName, List<Customer> cribMembers){
         this.cribName = cribName;
-        //this.cribMembers = cribMembers;
+        this.cribMembers = cribMembers;
     }
+
 
 
 }
