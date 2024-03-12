@@ -5,6 +5,8 @@ import { useNavigate } from 'react-router-dom';
 import Input from '../Components/TextInput'
 import Button from "../Components/Button/Button";
 import myImage from "./Logo_GreyBg.PNG"
+import axios from "axios";
+import Cookies from 'js-cookie';
 
 
 function Login(){
@@ -21,9 +23,22 @@ function Login(){
         setPasswordValue(newValue)
     }
 
-    function loginButtonOnclick(){
-        navigate('/mainmenu');
+    let loginData = {
+        "email" : emailValue,
+        "password" : passwordValue
     }
+
+    function loginButtonOnclick(){
+        axios.post("http://localhost:8080/login", loginData).then(
+            function (response){
+                Cookies.set('Token', response.data.token);
+                console.log(response.data.token)
+                navigate('/mainmenu');
+            }
+        ).catch(function (error){ console.log(error)})
+    }
+
+
 
 
 
